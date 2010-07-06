@@ -1,0 +1,6 @@
+# Ignore NetBeans private files
+nbproject/private*
+
+# Ignore build and dist directories
+build
+dist
