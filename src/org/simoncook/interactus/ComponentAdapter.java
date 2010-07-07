@@ -10,7 +10,7 @@ package org.simoncook.interactus;
  * @see ComponentInterface
  * @since 0.0.1
  */
-public class ComponentAdapter implements ComponentInterface
+public abstract class ComponentAdapter implements ComponentInterface
 {
     /**
      * Returns true if the component responds to Private Messages.
