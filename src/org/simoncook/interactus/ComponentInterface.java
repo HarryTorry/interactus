@@ -1,4 +1,4 @@
-package org.simoncook.interacus;
+package org.simoncook.interactus;
 
 /**
  * Interface that a Component that a bot component must meet.

@@ -1,4 +1,4 @@
-package org.simoncook.interacus;
+package org.simoncook.interactus;
 
 /**
  * Adapter for a Bot Component to extend to get full functionality of the bot.
