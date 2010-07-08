@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : config-default.xml
+    Author     : Simon Cook
+    Description: Defines Bot Launch Parameters
+-->
+<BotConfig>
+    <ConfigVersion>1.0</ConfigVersion>
+    <ConfigSection section="BotCore">
+        <Config name="BotName">InteractusExample</Config>
+        <Config name="DefaultJoin">
+            <Network>irc.quakenet.org</Network>
+            <Channel>
+                <ChanName>#interactusdemo</ChanName>
+            </Channel>
+        </Config>
+        <Config name="Verbosity">0</Config>
+    </ConfigSection>
+</BotConfig>
