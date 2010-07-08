@@ -4,3 +4,6 @@ nbproject/private*
 # Ignore build and dist directories
 build
 dist
+
+# Ignore any custom IRC Bot Configs
+config.xml
