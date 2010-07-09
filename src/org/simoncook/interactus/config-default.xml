@@ -14,6 +14,13 @@
                 <ChanName>#interactusdemo</ChanName>
             </Channel>
         </Config>
-        <Config name="Verbosity">0</Config>
+        <Config name="Verbosity">1</Config>
+    </ConfigSection>
+    <ConfigSection section="Modules">
+        <Module name="org.simoncook.interactus.CommonTasks" autoload="true">
+        </Module>
+        <Module name="org.simoncook.interactus.Logger" autoload="true">
+            <Config name="filename">chatlog.txt</Config>
+        </Module>
     </ConfigSection>
 </BotConfig>
