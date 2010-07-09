@@ -1,5 +1,7 @@
 package org.simoncook.interactus;
 
+import java.util.Map;
+
 /**
  * Interface that a Component that a bot component must meet.
  * A bot component should extend the ComponentAdapter that meets all interface
@@ -11,6 +13,12 @@ package org.simoncook.interactus;
  */
 public interface ComponentInterface
 {
+    /**
+     * Called when component initilized.
+     * @param config Bot Config
+     */
+    public void init(Map<String,String> config);
+
     /**
      * Returns true if the component responds to Private Messages.
      * @return true if component responds to Private Messages

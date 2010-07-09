@@ -1,5 +1,7 @@
 package org.simoncook.interactus;
 
+import java.util.Map;
+
 /**
  * Adapter for a Bot Component to extend to get full functionality of the bot.
  * A component will be able to implement ComponentInterface itself, but during
@@ -12,6 +14,13 @@ package org.simoncook.interactus;
  */
 public abstract class ComponentAdapter implements ComponentInterface
 {
+    /**
+     * Called when component initilized.
+     * @param config Bot Config
+     */
+    public void init(Map<String,String> config)
+    {
+    }
 
     /**
      * Returns true if the component responds to Private Messages.
