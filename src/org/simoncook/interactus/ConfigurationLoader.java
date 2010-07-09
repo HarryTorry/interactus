@@ -65,6 +65,8 @@ public class ConfigurationLoader
                 Element el = (Element)nl.item(i);
                 if(el.getAttribute("section").equals("BotCore"))
                     parseBotCore(el);
+                else if(el.getAttribute("section").equals("Modules"))
+                    parseModules(el);
             }
         }
     }
@@ -88,6 +90,46 @@ public class ConfigurationLoader
                     mp.put("Verbosity", el2.getFirstChild().getNodeValue());
                 else
                     System.err.println("We have something else here!");
+            }
+        }
+    }
+
+    /**
+     * Parses the Modules section of a configuration file.
+     * @param el Element corresponding to the Module component
+     */
+    private void parseModules(Element el){
+        NodeList nl = el.getElementsByTagName("Module");
+        if(nl != null && nl.getLength() > 0)
+        {
+            for(int i = 0; i < nl.getLength(); i++)
+            {
+                Element el2 = (Element)nl.item(i);
+                mp.put("Module" + i, el2.getAttribute("name"));
+                if(el2.getAttribute("autoload").equals("true"))
+                    mp.put("ModuleAutoLoad" + i, "true");
+                parseModuleConfig(el2.getAttribute("name"), el2);
+            }
+        }
+    }
+
+    /**
+     * Parses a modules configuration section
+     * @param index Module index for module config
+     * @param el Element corresponding to Module Configuration
+     */
+    private void parseModuleConfig(String index, Element el)
+    {
+        NodeList nl = el.getElementsByTagName("Config");
+        if(nl != null && nl.getLength() > 0)
+        {
+            for(int i = 0; i < nl.getLength(); i++)
+            {
+                Element el2 = (Element)nl.item(i);
+                if(el2.getAttribute("name") != null)
+                    mp.put("ModuleConfig" + index + "-" +
+                            el2.getAttribute("name"),
+                            el2.getFirstChild().getNodeValue());
             }
         }
     }
