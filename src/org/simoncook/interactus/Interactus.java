@@ -1,5 +1,9 @@
 package org.simoncook.interactus;
 
+import java.io.File;
+
+import java.net.URL;
+
 /**
  * The main Interactus Class. When running the bot from a jar file, this is the
  * class thats gets loaded to initialize the bot.
@@ -23,11 +27,15 @@ public class Interactus
      * Main Program
      * @param args Command line arguments (currently ignored)
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
         ConfigurationLoader config = new ConfigurationLoader();
-        config.parseConfig(ConfigurationLoader.class.getResource(
-                "config-default.xml"));
+        File f = new File("config.xml");
+        if(f.exists())
+            config.parseConfig("config.xml");
+        else
+            config.parseConfig(ConfigurationLoader.class.getResource
+                    ("config-default.xml"));
         bot = new Bot(config.getConfig());
     }
 }

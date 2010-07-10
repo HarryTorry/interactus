@@ -72,6 +72,46 @@ public class ConfigurationLoader
     }
 
     /**
+     * Parses a configuration
+     * @param configname URL pointing at valid Configuration XML file
+     */
+    public void parseConfig(String configname)
+    {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try
+        {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            dom = db.parse(configname);
+        }
+        catch(ParserConfigurationException pce)
+        {
+            pce.printStackTrace();
+        }
+        catch(SAXException se)
+        {
+            se.printStackTrace();
+        }
+        catch(IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+
+        Element docEle = dom.getDocumentElement();
+        NodeList nl = docEle.getElementsByTagName("ConfigSection");
+        if(nl != null && nl.getLength() > 0)
+        {
+            for(int i = 0 ; i < nl.getLength();i++)
+            {
+                Element el = (Element)nl.item(i);
+                if(el.getAttribute("section").equals("BotCore"))
+                    parseBotCore(el);
+                else if(el.getAttribute("section").equals("Modules"))
+                    parseModules(el);
+            }
+        }
+    }
+
+    /**
      * Parses the BotCore section of a configuration file.
      * @param el Element corresponding to the BotCore component
      */
