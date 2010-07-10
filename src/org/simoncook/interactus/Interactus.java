@@ -36,6 +36,6 @@ public class Interactus
         else
             config.parseConfig(ConfigurationLoader.class.getResource
                     ("config-default.xml"));
-        bot = new Bot(config.getConfig());
+        bot = new Bot(config.getConfig(),config.getModulesConfig());
     }
 }

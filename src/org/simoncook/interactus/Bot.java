@@ -15,15 +15,18 @@ public class Bot extends PircBot
 {
 
     Map<String,String> config;
+    Map<String,Map<String,String>> moduleconfig;
 
     /**
      * Default constructor. Once given a valid ConfigurationLoader, the bot will
      * then join the default IRC Server and Channels.
      * @param config ConfigurationLoader used to initilize the bot.
      */
-    public Bot(Map<String,String> config)
+    public Bot(Map<String,String> config, Map<String,Map<String,String>>
+            moduleconfig)
     {
         this.config = config;
+        this.moduleconfig = moduleconfig;
         this.setName(config.get("BotName"));
         this.setVerbose(true);
         this.setLogin(this.getName());

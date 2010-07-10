@@ -30,6 +30,8 @@ public class ConfigurationLoader
      */
     private Document dom;
     private Map<String,String> mp = new HashMap<String,String>();
+    private Map<String,Map<String,String>> cmp =
+            new HashMap<String,Map<String,String>>();
 
     /**
      * Parses a configuration
@@ -161,17 +163,18 @@ public class ConfigurationLoader
     private void parseModuleConfig(String index, Element el)
     {
         NodeList nl = el.getElementsByTagName("Config");
+        Map<String,String> map = new HashMap<String,String>();
         if(nl != null && nl.getLength() > 0)
         {
             for(int i = 0; i < nl.getLength(); i++)
             {
                 Element el2 = (Element)nl.item(i);
                 if(el2.getAttribute("name") != null)
-                    mp.put("ModuleConfig" + index + "-" +
-                            el2.getAttribute("name"),
+                    map.put(el2.getAttribute("name"),
                             el2.getFirstChild().getNodeValue());
             }
         }
+        cmp.put(index, map);
     }
 
     /**
@@ -202,5 +205,14 @@ public class ConfigurationLoader
     public Map<String,String>getConfig()
     {
         return mp;
+    }
+
+    /**
+     * Gets all Modules Config once the ConfigurationLoader has run.
+     * @return Module Configuration
+     */
+    public Map<String,Map<String,String>> getModulesConfig()
+    {
+        return cmp;
     }
 }
