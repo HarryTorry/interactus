@@ -21,7 +21,7 @@ public class Interactus
     /**
      * Bot is the main bot.
      */
-    private static Bot bot;
+    public static Bot bot;
 
     /**
      * Main Program
@@ -37,5 +37,15 @@ public class Interactus
             config.parseConfig(ConfigurationLoader.class.getResource
                     ("config-default.xml"));
         bot = new Bot(config.getConfig(),config.getModulesConfig());
+    }
+
+    /**
+     * Sends a message through the bot
+     * @param channel Channel to send message to
+     * @param message Message to send
+     */
+    public static void sendMessage(String channel, String message)
+    {
+        bot.sendMessage(channel, message);
     }
 }
