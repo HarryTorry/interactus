@@ -31,7 +31,10 @@ public class Bot extends PircBot
         this.config = config;
         this.moduleconfig = moduleconfig;
         this.setName(config.get("BotName"));
-        this.setVerbose(false);
+        if(config.get("Verbosity").equals("1"))
+            this.setVerbose(true);
+        else
+            this.setVerbose(false);
         this.setLogin(this.getName());
 
         // Connect to server
