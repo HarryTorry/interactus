@@ -37,7 +37,13 @@ public class Bot extends PircBot
             this.setVerbose(false);
         this.setLogin(this.getName());
 
-        // Connect to server
+    }
+
+    /**
+     * Connects the bot to the server
+     */
+    public void connect()
+    {
         try
         {
             this.connect(config.get("Network"));
@@ -64,8 +70,13 @@ public class Bot extends PircBot
             channel = config.get("Chan" + ++i);
         }
         components = new LinkedList<ComponentInterface>();
-        i = 0;
-        channel = config.get("Module0");
+        //loadModules();
+    }
+
+    public void loadModules()
+    {
+        String channel = config.get("Module0");
+        int i = 0;
         while(channel != null)
         {
             String component = channel + channel.substring(channel.lastIndexOf("."));
