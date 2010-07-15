@@ -107,4 +107,15 @@ public class Bot extends PircBot
                 component.takeChanMessage(channel, sender, message);
         }
     }
+
+    @Override
+    protected void onPrivateMessage(String sender, String login, String hostname, String message)
+    {
+        for(int i = 0; i < components.size(); i++)
+        {
+            ComponentInterface component = components.get(i);
+            if(component.handlesPM())
+                component.takePM(sender, message);
+        }
+    }
 }
